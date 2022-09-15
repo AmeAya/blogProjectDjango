@@ -4,9 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Fake Twitter</title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+<!--    <link href="{% static 'css/style.css' %}" rel="stylesheet">-->
 </head>
 <body>
+    {% if user.is_authenticated %}
+        <h1>Hello {{ user.username }}</h1>
+        <a href="{% url 'logout' %}">Log Out</a>
+        <br>
+        <a href="{% url 'newPost' %}">Create New Post</a>
+    {% else %}
+        <h1>You are not logged in</h1>
+        <a href="{% url 'login'%}">Log In</a>
+        <br>
+        <a href="{% url 'registration'%}">Registration</a>
+    {% endif %}
     {% for object in object_list %}
         <h1><a href="{% url 'post' object.id %}">{{ object.title }}</a></h1>
         <h2>{{ object.author }}</h2>
