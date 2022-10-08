@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Home Page</title>
+</head>
+<body>
+    {% for post in posts %}
+        <p>{{ post.title }}</p>
+    {% endfor %}
+    <br>
+    {% for ad in ads %}
+        <p>{{ ad.name }}</p>
+    {% endfor %}
+</body>
+</html>

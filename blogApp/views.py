@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, \
     CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-from .models import Post
+from .models import Post, Advertises
 # Create your views here.
 class BlogListView(ListView):
     model = Post
@@ -27,3 +27,17 @@ class BlogDeleteView(DeleteView):
     model = Post
     template_name = 'deletePost.html'
     success_url = reverse_lazy('home')
+
+def homePageView(request):
+    contextData = {
+        'posts': Post.objects.all(),
+        'ads': Advertises.objects.all()
+    }
+    return render(request, 'fakeHomePage.html', context=contextData)
+
+def testCreateView(request):
+    new = Post(title='CreateViewTest',
+               author=request.user,
+               body='Random body text',
+               language='EN')
+    new.save()

@@ -16,9 +16,14 @@ class Post(models.Model):
                                     ('FR', 'French'),
                                     ('GR', 'Germanic'),
                                 ])
+    photo = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('post', args=[str(self.id)])
+
+class Advertises(models.Model):
+    name = models.CharField(max_length=50)
+    price = models.CharField(max_length=10)
