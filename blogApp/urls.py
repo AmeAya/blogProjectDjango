@@ -12,3 +12,4 @@ urlpatterns = [
     path('newTest', testCreateView, name='testView'),
     path('', BlogListView.as_view(), name='home'),
 ]
+#qwe
